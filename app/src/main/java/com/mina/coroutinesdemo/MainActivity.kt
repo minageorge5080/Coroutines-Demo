@@ -3,10 +3,8 @@ package com.mina.coroutinesdemo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.mina.coroutinesdemo.store.network.APIService
-import com.mina.coroutinesdemo.store.network.NetworkDispatcher
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -31,7 +29,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     }
 
     suspend fun getData(): JsonObject {
-        return NetworkDispatcher.retrofit.create(APIService::class.java).getData().await()
+        return APIService().getData().await()
     }
 
 
