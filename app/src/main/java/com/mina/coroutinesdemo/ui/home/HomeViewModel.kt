@@ -22,5 +22,4 @@ class HomeViewModel : BaseViewModel() {
         APIService().getData().await()
     }
 
-
 }

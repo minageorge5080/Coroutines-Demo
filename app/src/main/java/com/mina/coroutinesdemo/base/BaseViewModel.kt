@@ -10,12 +10,12 @@ import kotlinx.coroutines.SupervisorJob
 
 open class BaseViewModel : ViewModel() {
 
-    val viewModelJob = SupervisorJob()
-    val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-
     val handler = CoroutineExceptionHandler { _, exception ->
         Log.d("minaError", exception.localizedMessage)
     }
+
+    val viewModelJob = SupervisorJob()
+    val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob + handler)
 
     override fun onCleared() {
         viewModelJob.cancel()
