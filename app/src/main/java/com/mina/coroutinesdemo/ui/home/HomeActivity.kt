@@ -13,8 +13,8 @@ class HomeActivity : BaseActivity() {
     override fun onCreateActivityComponent() {
 
         val homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java);
-        homeViewModel.liveData.observe(this, Observer {
-            Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
+        homeViewModel.liveData.observe(this, Observer<String> {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
     }
 

@@ -2,5 +2,5 @@ package com.mina.coroutinesdemo.store.network
 
 object EndPoints {
 
-    const val baseUrl = "efewf"
+    const val baseUrl = "https://mina-george.com/demos/"
 }
