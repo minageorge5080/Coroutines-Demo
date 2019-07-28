@@ -1,7 +1,6 @@
 package com.mina.coroutinesdemo.base
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -14,11 +13,11 @@ open class BaseViewModel : ViewModel() {
         Log.d("minaError", exception.localizedMessage)
     }
 
-    val viewModelJob = SupervisorJob()
-    val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob + handler)
+    val job = SupervisorJob()
+    val uiScope = CoroutineScope(Dispatchers.Main + job + handler)
 
     override fun onCleared() {
-        viewModelJob.cancel()
+        job.complete()
         super.onCleared()
     }
 }
