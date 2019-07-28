@@ -14,31 +14,14 @@ interface APIService {
     @GET("configs.php")
     fun getData(): Deferred<JsonObject>
 
+
     companion object {
 
         const val API_KEY = "8103fe7b95954091845175912182112"
 
         operator fun invoke(): APIService {
-//
-//            val requestInterceptor = Interceptor { chain ->
-//                val url = chain.request()
-//                    .url()
-//                    .newBuilder()
-////                    .addQueryParameter("key", "cf")
-//
-//                    .build()
-//
-//
-//                val request = chain.request()
-//                    .newBuilder()
-//                    .url(url)
-//                    .build()
-//
-//                return@Interceptor chain.proceed(request)
-//            }
 
             val okHttpClient = OkHttpClient.Builder()
-//                .addInterceptor(requestInterceptor)
                 .build()
 
             return Retrofit.Builder()
